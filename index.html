@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordraty Restaurant - مطعم أوردراتي</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: "#E31C25", // الأحمر (لون الزر الرئيسي)
+                blue: "#0F172A", // الأزرق الداكن (لون النصوص)
+                dark: "#1a1a1a",
+                light: "#f8f8f8",
+              },
+            },
+            fontFamily: {
+              sans: ["Cairo", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 0 20px rgba(227, 28, 37, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Slider Height */
+      .hero-slide {
+        height: 90vh;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* Dark Overlay for Restaurant Vibe */
+      .overlay-dark {
+        background: linear-gradient(
+          rgba(15, 23, 42, 0.6),
+          rgba(15, 23, 42, 0.8)
+        );
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Custom Dots */
+      .owl-theme .owl-dots {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
+      }
+      .owl-theme .owl-dots .owl-dot span {
+        width: 12px;
+        height: 12px;
+        margin: 5px;
+        background: rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      .owl-theme .owl-dots .owl-dot.active span {
+        background: #e31c25;
+        border-color: #e31c25;
+        transform: scale(1.3);
+      }
+    </style>
+  </head>
+  <body class="font-sans text-brand-blue bg-white">
+    <header
+      class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300"
+      id="navbar"
+    >
+      <div class="container mx-auto px-4 lg:px-12">
+        <div class="flex justify-between items-center h-24">
+          <div class="flex items-center gap-2 cursor-pointer">
+            <div class="flex flex-col items-center">
+              <span
+                class="text-3xl font-extrabold text-brand-blue tracking-tighter flex items-center gap-2"
+              >
+                <i class="fa-solid fa-burger text-brand-red"></i> Ordraty
+              </span>
+              <span
+                class="text-[10px] text-gray-400 tracking-[0.3em] uppercase -mt-1 w-full text-center"
+                >Restaurant</span
+              >
+            </div>
+          </div>
+
+          <nav class="hidden lg:flex items-center gap-6 font-bold text-base">
+            <a href="#" class="text-brand-red">الرئيسية</a>
+            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+              >قائمة الطعام</a
+            >
+            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+              >الفروع</a
+            >
+            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+              >تواصل معنا</a
+            >
+            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+              >عن المطعم</a
+            >
+          </nav>
+
+          <div class="hidden lg:flex items-center gap-4">
+            <div
+              class="flex items-center gap-3 text-gray-400 border-l pl-3 ml-1 border-gray-200"
+            >
+              <a
+                href="#"
+                class="hover:text-brand-red transition"
+                title="English / عربي"
+              >
+                <i class="fa-solid fa-globe text-lg"></i>
+              </a>
+              <a href="#" class="hover:text-brand-red transition" title="بحث">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+              </a>
+            </div>
+
+            <div class="flex items-center gap-4 text-brand-blue">
+              <a
+                href="#"
+                class="hover:text-brand-red transition flex flex-col items-center group"
+                title="لوحة التحكم والأوردرات"
+              >
+                <i
+                  class="fa-solid fa-clipboard-list text-xl mb-0.5 group-hover:-translate-y-1 transition-transform"
+                ></i>
+              </a>
+
+              <a
+                href="#"
+                class="hover:text-brand-red transition flex flex-col items-center group"
+                title="تسجيل الدخول"
+              >
+                <i
+                  class="fa-regular fa-user text-xl mb-0.5 group-hover:-translate-y-1 transition-transform"
+                ></i>
+              </a>
+
+              <div class="relative cursor-pointer group mr-1">
+                <i
+                  class="fa-solid fa-bag-shopping text-xl hover:text-brand-red transition group-hover:-translate-y-1"
+                ></i>
+                <span
+                  class="absolute -top-1 -right-2 bg-brand-red text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full"
+                  >0</span
+                >
+              </div>
+            </div>
+
+            <a
+              href="#"
+              class="bg-brand-red text-white px-6 py-2.5 rounded-full font-bold hover:bg-red-700 transition shadow-glow transform hover:-translate-y-0.5 mr-2"
+            >
+              اطلب أونلاين
+            </a>
+          </div>
+
+          <button id="menu-btn" class="lg:hidden text-2xl text-brand-blue">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-white border-t absolute w-full left-0 shadow-lg h-screen overflow-y-auto pb-20"
+      >
+        <div class="p-6 flex flex-col gap-4 font-bold text-gray-700">
+          <a href="#" class="text-brand-red">الرئيسية</a>
+          <a href="#">قائمة الطعام</a>
+          <a href="#">الفروع</a>
+          <a href="#">تواصل معنا</a>
+          <a href="#">عن المطعم</a>
+          <hr class="border-gray-100" />
+
+          <a href="#" class="flex items-center gap-3 hover:text-brand-red">
+            <i class="fa-solid fa-clipboard-list text-xl w-6 text-center"></i>
+            متابعة الأوردرات
+          </a>
+          <a href="#" class="flex items-center gap-3 hover:text-brand-red">
+            <i class="fa-regular fa-user text-xl w-6 text-center"></i> تسجيل
+            الدخول
+          </a>
+          <a href="#" class="flex items-center gap-3 hover:text-brand-red">
+            <i class="fa-solid fa-globe text-xl w-6 text-center"></i> Change
+            Language
+          </a>
+
+          <a
+            href="#"
+            class="bg-brand-red text-white py-3 rounded-full shadow-lg text-center mt-4"
+            >اطلب أونلاين</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <section class="owl-carousel owl-theme mt-0 relative z-10" id="main-slider">
+      <div
+        class="hero-slide flex items-center"
+        style="
+          background-image: url(&quot;https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2669&auto=format&fit=crop&quot;);
+        "
+      >
+        <div class="overlay-dark"></div>
+        <div class="container mx-auto px-4 lg:px-12 relative z-20">
+          <div
+            class="max-w-3xl text-white space-y-7 text-center mx-auto lg:text-right lg:mx-0"
+          >
+            <span
+              class="text-brand-red font-bold tracking-wider uppercase bg-white/10 px-4 py-1 rounded-full backdrop-blur-md border border-white/20 inline-block"
+            >
+              <i class="fa-solid fa-fire-flame-curved ml-2"></i> الطعم الأصلي
+            </span>
+            <h1 class="text-3xl lg:text-5xl font-extrabold leading-tight">
+              استمتع بألذ <br />
+              المشويات الشرقية
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-xl">
+              في أوردراتي، نقدم لك تجربة طعام استثنائية بمكونات طازجة ووصفات
+              سرية توارثناها جيلاً بعد جيل.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start"
+            >
+              <a
+                href="#"
+                class="bg-brand-red text-white px-10 py-4 rounded-full font-bold shadow-glow hover:bg-red-700 transition"
+              >
+                شاهد المنيو
+              </a>
+              <a
+                href="#"
+                class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-brand-blue transition"
+              >
+                حجز طاولة
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="hero-slide flex items-center"
+        style="
+          background-image: url(&quot;https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2699&auto=format&fit=crop&quot;);
+        "
+      >
+        <div class="overlay-dark"></div>
+        <div class="container mx-auto px-4 lg:px-12 relative z-20">
+          <div
+            class="max-w-3xl text-white space-y-7 text-center mx-auto lg:text-right lg:mx-0"
+          >
+            <span
+              class="text-yellow-400 font-bold tracking-wider uppercase bg-white/10 px-4 py-1 rounded-full backdrop-blur-md border border-white/20 inline-block"
+            >
+              <i class="fa-solid fa-star ml-2"></i> الأكثر مبيعاً
+            </span>
+            <h1 class="text-3xl lg:text-5xl font-extrabold leading-tight">
+              برجر اللحم <br />
+              المشوي على الفحم
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-xl">
+              لعشاق البرجر الحقيقي، جرب البرجر الخاص بنا المجهز بخلطة التوابل
+              السرية والجبن السايح.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start"
+            >
+              <a
+                href="#"
+                class="bg-brand-red text-white px-10 py-4 rounded-full font-bold shadow-glow hover:bg-red-700 transition"
+              >
+                اطلب الآن
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="relative z-30 -mt-16 container mx-auto px-4">
+      <div
+        class="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-b-4 border-brand-red"
+      >
+        <div class="group">
+          <div
+            class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-red transition duration-300"
+          >
+            <i
+              class="fa-solid fa-utensils text-2xl text-brand-red group-hover:text-white transition duration-300"
+            ></i>
+          </div>
+          <h3 class="font-bold text-xl text-brand-blue mb-2">طعم لا يقاوم</h3>
+          <p class="text-gray-500 text-sm">
+            نستخدم أفضل أنواع اللحوم والخضروات الطازجة يومياً.
+          </p>
+        </div>
+        <div class="group">
+          <div
+            class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-red transition duration-300"
+          >
+            <i
+              class="fa-solid fa-clock text-2xl text-brand-red group-hover:text-white transition duration-300"
+            ></i>
+          </div>
+          <h3 class="font-bold text-xl text-brand-blue mb-2">توصيل سريع</h3>
+          <p class="text-gray-500 text-sm">
+            اطلب أكلك السخن يوصلك في أسرع وقت ممكن.
+          </p>
+        </div>
+        <div class="group">
+          <div
+            class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-red transition duration-300"
+          >
+            <i
+              class="fa-solid fa-award text-2xl text-brand-red group-hover:text-white transition duration-300"
+            ></i>
+          </div>
+          <h3 class="font-bold text-xl text-brand-blue mb-2">شيفات محترفين</h3>
+          <p class="text-gray-500 text-sm">
+            فريق من أمهر الطهاة لضمان جودة وطعم استثنائي.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // Owl Carousel Initialization
+        $("#main-slider").owlCarousel({
+          rtl: true, // اتجاه عربي
+          items: 1,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          smartSpeed: 800,
+          nav: false,
+          dots: true,
+          animateOut: "fadeOut", // تأثير تلاشي ناعم
+          mouseDrag: true,
+          touchDrag: true,
+        });
+
+        // Mobile Menu Toggle
+        $("#menu-btn").click(function () {
+          $("#mobile-menu").slideToggle(300);
+        });
+
+        // Sticky Header Logic (Optional enhancement)
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 10) {
+            $("#navbar").addClass("shadow-md");
+          } else {
+            $("#navbar").removeClass("shadow-md");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
