@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordraty Restaurant - مطعم أوردراتي</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <style>
+      /* ستايل سكرول السلة الصغير */
+      .custom-mini-scroll::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-mini-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-mini-scroll::-webkit-scrollbar-thumb {
+        background: #e2e8f0;
+        border-radius: 10px;
+      }
+      .custom-mini-scroll::-webkit-scrollbar-thumb:hover {
+        background: #e31c25;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: "#E31C25", // الأحمر (لون الزر الرئيسي)
+                blue: "#0F172A", // الأزرق الداكن (لون النصوص)
+                dark: "#1a1a1a",
+                light: "#f8f8f8",
+              },
+            },
+            fontFamily: {
+              sans: ["Cairo", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 0 20px rgba(227, 28, 37, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Slider Height */
+      .hero-slide {
+        height: 90vh;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* Dark Overlay for Restaurant Vibe */
+      .overlay-dark {
+        background: linear-gradient(
+          rgba(15, 23, 42, 0.6),
+          rgba(15, 23, 42, 0.8)
+        );
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Custom Dots */
+      .owl-theme .owl-dots {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
+      }
+      .owl-theme .owl-dots .owl-dot span {
+        width: 12px;
+        height: 12px;
+        margin: 5px;
+        background: rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      .owl-theme .owl-dots .owl-dot.active span {
+        background: #e31c25;
+        border-color: #e31c25;
+        transform: scale(1.3);
+      }
+    </style>
+  </head>
+  <body class="">
+    <section
+      class="min-h-screen flex items-stretch bg-white font-['Cairo']"
+      dir="rtl"
+    >
+      <div
+        class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-brand-blue"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1074&auto=format&fit=crop"
+          class="absolute inset-0 w-full h-full object-cover z-0 opacity-40 scale-110"
+        />
+        <div
+          class="absolute inset-0 z-10 bg-gradient-to-t from-brand-blue via-brand-blue/70 to-transparent"
+        ></div>
+        <div class="relative z-20 self-center p-20 text-right w-full">
+          <h2 class="text-6xl font-black text-white mb-8 leading-[1.1]">
+            انضم إلى عالم <span class="text-brand-red italic">أوردراتي</span>
+          </h2>
+          <p
+            class="text-white/70 text-xl font-medium leading-relaxed max-w-md ml-auto"
+          >
+            ابدأ رحلة السعادة واستمتع بأشهى الوجبات مع عروض حصرية للأعضاء فقط.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="w-full lg:w-1/2 flex items-center justify-center p-8 md:p-16 bg-[#fcfcfc] overflow-y-auto"
+      >
+        <div class="max-w-md w-full py-10">
+          <div class="text-center lg:text-right mb-12">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-3xl mb-6 shadow-2xl border border-gray-50 transition-transform hover:rotate-12 group"
+            >
+              <i class="fa-solid fa-user-plus text-brand-red text-2xl"></i>
+            </div>
+            <h1 class="text-4xl font-black text-brand-blue mb-3">حساب جديد</h1>
+            <p class="text-gray-400 font-bold text-sm">
+              سجل بياناتك وانطلق في تجربة طعام فريدة
+            </p>
+          </div>
+
+          <form class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <label
+                  class="text-[10px] font-black text-gray-400 mr-2 uppercase tracking-widest"
+                  >الاسم الأول</label
+                >
+                <div class="relative group">
+                  <input
+                    type="text"
+                    placeholder="يوسف"
+                    required
+                    class="w-full bg-white border-2 border-gray-50 rounded-2xl py-4 pr-12 text-sm focus:border-brand-red/50 outline-none transition-all shadow-sm font-bold text-brand-blue"
+                  />
+                  <i
+                    class="fa-regular fa-user absolute right-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                  ></i>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-[10px] font-black text-gray-400 mr-2 uppercase tracking-widest"
+                  >الاسم الثاني</label
+                >
+                <div class="relative group">
+                  <input
+                    type="text"
+                    placeholder="أحمد"
+                    required
+                    class="w-full bg-white border-2 border-gray-50 rounded-2xl py-4 pr-12 text-sm focus:border-brand-red/50 outline-none transition-all shadow-sm font-bold text-brand-blue"
+                  />
+                  <i
+                    class="fa-regular fa-user absolute right-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                  ></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label
+                class="text-[10px] font-black text-gray-400 mr-2 uppercase tracking-widest"
+                >البريد الإلكتروني</label
+              >
+              <div class="relative group">
+                <input
+                  type="email"
+                  placeholder="example@mail.com"
+                  required
+                  class="w-full bg-white border-2 border-gray-50 rounded-2xl py-4 pr-12 text-sm focus:border-brand-red/50 outline-none transition-all shadow-sm font-bold text-brand-blue"
+                />
+                <i
+                  class="fa-regular fa-envelope absolute right-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                ></i>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label
+                class="text-[10px] font-black text-gray-400 mr-2 uppercase tracking-widest"
+                >كلمة المرور</label
+              >
+              <div class="relative group">
+                <input
+                  type="password"
+                  id="password-field"
+                  placeholder="••••••••"
+                  required
+                  class="w-full bg-white border-2 border-gray-50 rounded-2xl py-4 pr-12 pl-14 text-sm focus:border-brand-red/50 outline-none transition-all shadow-sm font-bold text-brand-blue"
+                />
+                <i
+                  class="fa-solid fa-lock absolute right-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                ></i>
+
+                <button
+                  type="button"
+                  id="toggle-password"
+                  class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl hover:bg-gray-50 flex items-center justify-center text-gray-300 hover:text-brand-red transition-all"
+                >
+                  <i class="fa-regular fa-eye text-lg" id="eye-icon"></i>
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-brand-blue text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-4 hover:bg-brand-red transition-all duration-500 active:scale-95 shadow-xl shadow-brand-blue/10 group"
+            >
+              <span>إنشاء حسابي الآن</span>
+              <i
+                class="fa-solid fa-arrow-left text-sm group-hover:-translate-x-2 transition-transform"
+              ></i>
+            </button>
+
+            <p class="text-center text-sm font-bold text-gray-400 mt-8">
+              لديك حساب بالفعل؟
+              <a
+                href="login.html"
+                class="text-brand-red font-black hover:underline mr-1"
+                >سجل دخولك من هنا</a
+              >
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="./js/register.js">
+      
+    </script>
+  </body>
+</html>

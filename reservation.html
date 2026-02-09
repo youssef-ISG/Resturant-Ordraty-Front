@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordraty Restaurant - مطعم أوردراتي</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+
+    <link rel="stylesheet" href="./dist/output.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  </head>
+  <body class="font-sans text-brand-blue bg-white">
+    <header
+      class="fixed w-full top-0 z-[100] bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300 border-b border-gray-100"
+      id="navbar"
+    >
+      <div class="container mx-auto px-4 lg:px-12">
+        <div class="flex justify-between items-center h-24">
+          <div class="flex items-center">
+            <a href="./" class="flex items-center gap-2 overflow-hidden">
+              <img
+                src="./images/logo.webp"
+                class="w-[130px] object-contain"
+                alt="Ordraty Logo"
+              />
+            </a>
+          </div>
+
+          <nav
+            class="hidden lg:flex items-center gap-8 font-bold text-sm tracking-wide"
+          >
+            <a
+              href="./"
+              class="text-brand-red relative after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-1/2 after:h-0.5 after:bg-brand-red"
+              >الرئيسية</a
+            >
+            <a
+              href="./menu.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
+              >قائمة الطعام</a
+            >
+            <a
+              href="./branchs.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
+              >الفروع</a
+            >
+            <a
+              href="./contact.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
+              >تواصل معنا</a
+            >
+            <a
+              href="./about.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
+              >عن المطعم</a
+            >
+          </nav>
+
+          <div class="hidden lg:flex items-center gap-5">
+            <div
+              class="flex items-center gap-4 text-gray-400 border-l pl-5 border-gray-100"
+            >
+              <div class="relative group" id="lang-dropdown">
+                <button
+                  class="flex items-center gap-2 text-gray-500 hover:text-brand-red transition-all py-2 font-bold text-sm"
+                >
+                  <i class="fa-solid fa-globe text-lg"></i>
+                  <span>العربية</span>
+                  <i
+                    class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"
+                  ></i>
+                </button>
+                <div
+                  class="absolute top-full right-0 mt-2 w-40 bg-white shadow-2xl rounded-2xl border border-gray-50 py-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-[110]"
+                >
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 text-brand-blue hover:text-brand-red transition-all"
+                  >
+                    <img
+                      src="https://flagcdn.com/w20/eg.png"
+                      class="w-5 h-4 object-cover rounded-sm shadow-sm"
+                      alt="Arabic"
+                    />
+                    <span class="text-xs font-black">العربية</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 text-brand-blue hover:text-brand-red transition-all"
+                  >
+                    <img
+                      src="https://flagcdn.com/w20/us.png"
+                      class="w-5 h-4 object-cover rounded-sm shadow-sm"
+                      alt="English"
+                    />
+                    <span class="text-xs font-black">English</span>
+                  </a>
+                </div>
+              </div>
+
+              <button
+                class="hover:text-brand-red transition-colors"
+                title="بحث"
+              >
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-5 text-brand-blue">
+              <a
+                href="./orders.html"
+                class="hover:text-brand-red transition-all group"
+                title="الأوردرات"
+              >
+                <i
+                  class="fa-solid fa-clipboard-list text-xl group-hover:-translate-y-1 transition-transform"
+                ></i>
+              </a>
+              <a
+                href="./profile.html"
+                class="hover:text-brand-red transition-all group"
+                title="حسابي"
+              >
+                <i
+                  class="fa-regular fa-user text-xl group-hover:-translate-y-1 transition-transform"
+                ></i>
+              </a>
+              <div class="relative group" id="mini-cart-wrapper">
+                <button
+                  id="cart-icon-btn"
+                  class="relative cursor-pointer flex items-center justify-center w-10 h-10 rounded-xl hover:bg-gray-50 transition-all group/icon"
+                >
+                  <i
+                    class="fa-solid fa-bag-shopping text-xl text-brand-blue group-hover/icon:text-brand-red transition-all"
+                  ></i>
+                  <span
+                    class="absolute -top-1 -right-1 bg-brand-red text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-glow-red"
+                    >3</span
+                  >
+                </button>
+                <!-- cart popup -->
+                <div
+                  id="mini-cart-popup"
+                  class="hidden absolute top-full left-0 mt-4 w-[350px] bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 z-[120] overflow-hidden animate-in fade-in zoom-in slide-in-from-top-4 duration-300"
+                >
+                  <div
+                    class="p-6 border-b border-gray-50 flex justify-between items-center"
+                  >
+                    <h3
+                      class="font-black text-brand-blue text-sm uppercase tracking-widest"
+                    >
+                      طلباتك الحالية
+                    </h3>
+                    <span
+                      class="bg-red-50 text-brand-red px-3 py-1 rounded-lg text-[10px] font-black"
+                      >3 أطباق</span
+                    >
+                  </div>
+
+                  <div
+                    class="max-h-[320px] overflow-y-auto p-4 space-y-4 custom-mini-scroll"
+                  >
+                    <div
+                      class="flex gap-4 p-2 rounded-2xl hover:bg-gray-50 transition-colors group/item"
+                    >
+                      <div
+                        class="w-16 h-16 bg-red-50 rounded-xl p-2 flex-shrink-0"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=150"
+                          class="w-full h-full object-contain transform group-hover/item:scale-110 transition-transform"
+                        />
+                      </div>
+                      <div class="flex-1 text-right">
+                        <h4
+                          class="text-xs font-black text-brand-blue line-clamp-1"
+                        >
+                          تشيز برجر كلاسيك
+                        </h4>
+                        <p class="text-[10px] text-gray-400 mt-1">
+                          الكمية: 1 ×
+                          <span class="text-brand-red font-bold">145ج</span>
+                        </p>
+                      </div>
+                      <button
+                        class="text-gray-300 hover:text-brand-red transition-colors self-center"
+                      >
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                      </button>
+                    </div>
+
+                    <div
+                      class="flex gap-4 p-2 rounded-2xl hover:bg-gray-50 transition-colors group/item"
+                    >
+                      <div
+                        class="w-16 h-16 bg-orange-50 rounded-xl p-2 flex-shrink-0"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=150"
+                          class="w-full h-full object-contain transform group-hover/item:scale-110 transition-transform"
+                        />
+                      </div>
+                      <div class="flex-1 text-right">
+                        <h4
+                          class="text-xs font-black text-brand-blue line-clamp-1"
+                        >
+                          بيتزا ببروني
+                        </h4>
+                        <p class="text-[10px] text-gray-400 mt-1">
+                          الكمية: 2 ×
+                          <span class="text-brand-red font-bold">120ج</span>
+                        </p>
+                      </div>
+                      <button
+                        class="text-gray-300 hover:text-brand-red transition-colors self-center"
+                      >
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="p-6 bg-gray-50/50 border-t border-gray-100">
+                    <div class="flex justify-between items-center mb-6">
+                      <span
+                        class="text-gray-400 text-xs font-bold uppercase tracking-widest"
+                        >الإجمالي</span
+                      >
+                      <span class="text-xl font-black text-brand-blue"
+                        >385 <small class="text-[10px]">ج.م</small></span
+                      >
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                      <a
+                        href="./cart.html"
+                        class="bg-white text-brand-blue border border-gray-200 py-3 rounded-xl text-xs font-black text-center hover:bg-gray-50 transition-all shadow-sm"
+                        >عرض السلة</a
+                      >
+                      <a
+                        href="./checkout.html"
+                        class="bg-brand-red text-white py-3 rounded-xl text-xs font-black text-center hover:bg-brand-blue transition-all shadow-lg shadow-brand-red/20"
+                        >إتمام الطلب</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="./login.html"
+              class="bg-brand-red text-white px-7 py-3 rounded-full font-black text-xs hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/30 transform hover:-translate-y-0.5"
+            >
+              تسجيل دخول
+            </a>
+          </div>
+
+          <button
+            id="menu-btn"
+            class="lg:hidden w-12 h-12 rounded-2xl bg-gray-50 text-brand-blue flex items-center justify-center transition-all active:scale-90"
+          >
+            <i class="fa-solid fa-bars-staggered text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-white border-t absolute w-full left-0 shadow-2xl h-screen overflow-y-auto pb-32 animate-in slide-in-from-top duration-500"
+      >
+        <div class="p-6 flex flex-col gap-2 font-black text-brand-blue">
+          <a href="./" class="p-4 rounded-2xl bg-red-50 text-brand-red"
+            >الرئيسية</a
+          >
+          <a href="./menu.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >قائمة الطعام</a
+          >
+          <a href="./branchs.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >الفروع</a
+          >
+          <a href="./contact.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >تواصل معنا</a
+          >
+          <a href="./cart.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >سلة المشتريات</a
+          >
+
+          <div class="border-t border-gray-100 my-2 pt-2">
+            <button
+              id="mobile-lang-trigger"
+              class="w-full flex items-center justify-between p-4 text-brand-blue font-black rounded-2xl hover:bg-gray-50 transition-all"
+            >
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-globe text-xl text-gray-400"></i>
+                <span>اللغة (العربية)</span>
+              </div>
+              <i
+                class="fa-solid fa-chevron-left text-[10px] transition-transform duration-300"
+                id="mobile-lang-arrow"
+              ></i>
+            </button>
+            <div
+              id="mobile-lang-content"
+              class="hidden pr-14 flex flex-col gap-4 py-2"
+            >
+              <a href="#" class="text-sm text-gray-500 hover:text-brand-red"
+                >العربية</a
+              >
+              <a href="#" class="text-sm text-gray-500 hover:text-brand-red"
+                >English</a
+              >
+            </div>
+          </div>
+
+          <hr class="border-gray-50 my-2" />
+
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <a
+              href="./orders.html"
+              class="flex flex-col items-center gap-2 p-4 rounded-[2rem] bg-gray-50 hover:bg-white hover:shadow-md transition-all border border-gray-100"
+            >
+              <i class="fa-solid fa-clipboard-list text-xl text-brand-red"></i>
+              <span class="text-[10px] uppercase tracking-widest">طلباتي</span>
+            </a>
+            <a
+              href="./profile.html"
+              class="flex flex-col items-center gap-2 p-4 rounded-[2rem] bg-gray-50 hover:bg-white hover:shadow-md transition-all border border-gray-100"
+            >
+              <i class="fa-regular fa-user text-xl text-brand-red"></i>
+              <span class="text-[10px] uppercase tracking-widest">حسابي</span>
+            </a>
+          </div>
+
+          <a
+            href="./login.html"
+            class="bg-brand-red text-white py-5 rounded-[2rem] shadow-xl shadow-brand-red/20 text-center mt-6 font-black text-lg"
+          >
+            اطلب أونلاين الآن
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-36  min-h-screen font-['Cairo']"
+      dir="rtl"
+    >
+      <div class="flex flex-col lg:flex-row gap-8">
+        <aside class="lg:w-1/4">
+          <div
+            class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm text-center relative overflow-hidden"
+          >
+            <div class="relative w-24 h-24 mx-auto mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+                class="w-full h-full rounded-full object-cover border-4 border-slate-50 shadow-inner"
+              />
+            </div>
+            <h3 class="text-lg font-black text-brand-blue">يوسف المحمدي</h3>
+            <p
+              class="text-slate-400 text-[10px] mb-8 tracking-widest uppercase font-bold"
+            >
+              الرصيد: 520 ج.م
+            </p>
+
+            <nav class="space-y-2 text-right">
+              <a
+                href="./profile.html"
+                class="flex items-center gap-3 p-4 text-slate-500 hover:bg-slate-50 rounded-2xl font-bold transition-all"
+              >
+                <i class="fa-regular fa-user-circle"></i> تعديل البيانات
+              </a>
+              <a
+                href="./orders.html"
+                class="flex items-center justify-between p-4 text-slate-500 hover:bg-slate-50 rounded-2xl font-bold transition-all"
+              >
+                <span class="flex items-center gap-3"
+                  ><i class="fa-solid fa-box-open"></i> طلباتي</span
+                >
+              </a>
+              <a
+                href="./reservation.html"
+                class="flex items-center justify-between p-4 bg-brand-blue text-white rounded-2xl font-black shadow-lg shadow-brand-blue/20"
+              >
+                <span class="flex items-center gap-3"
+                  ><i class="fa-regular fa-calendar-check"></i> حجوزاتي</span
+                >
+                <span
+                  class="bg-brand-red text-white text-[10px] px-2 py-0.5 rounded-lg shadow-glow-red"
+                  >2</span
+                >
+              </a>
+              <hr class="my-4 border-slate-50" />
+              <a
+                href="#"
+                class="flex items-center gap-3 p-4 text-red-400 font-bold transition-all hover:text-red-600"
+              >
+                <i class="fa-solid fa-arrow-right-from-bracket rotate-180"></i>
+                خروج
+              </a>
+            </nav>
+          </div>
+        </aside>
+
+        <div class="lg:w-3/4 space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+            <h2
+              class="text-2xl font-black text-brand-blue flex items-center gap-3"
+            >
+              <span class="w-2 h-8 bg-brand-red rounded-full"></span>
+              قائمة الحجوزات
+            </h2>
+
+            <div
+              class="flex bg-white p-1 rounded-xl border border-slate-100 shadow-sm"
+            >
+              <button
+                class="px-5 py-2 rounded-lg bg-brand-red text-white text-xs font-black shadow-sm"
+              >
+                الكل
+              </button>
+              <button
+                class="px-5 py-2 rounded-lg text-slate-400 text-xs font-bold hover:text-brand-blue transition-all"
+              >
+                القادمة
+              </button>
+              <button
+                class="px-5 py-2 rounded-lg text-slate-400 text-xs font-bold hover:text-brand-blue transition-all"
+              >
+                السابقة
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden"
+          >
+            <div class="overflow-x-auto">
+              <table class="w-full text-right border-collapse min-w-[700px]">
+                <thead>
+                  <tr class="bg-slate-50/50 border-b border-slate-50">
+                    <th
+                      class="p-6 text-[10px] font-black text-slate-400 uppercase tracking-widest"
+                    >
+                      رقم الحجز
+                    </th>
+                    <th
+                      class="p-6 text-[10px] font-black text-slate-400 uppercase tracking-widest"
+                    >
+                      الفرع
+                    </th>
+                    <th
+                      class="p-6 text-[10px] font-black text-slate-400 uppercase tracking-widest"
+                    >
+                      التاريخ والوقت
+                    </th>
+                    <th
+                      class="p-6 text-[10px] font-black text-slate-400 uppercase tracking-widest"
+                    >
+                      الأفراد
+                    </th>
+                    <th
+                      class="p-6 text-[10px] font-black text-slate-400 uppercase tracking-widest"
+                    >
+                      الحالة
+                    </th>
+                    <th
+                      class="p-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center"
+                    >
+                      إجراء
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                  <tr class="group hover:bg-slate-50/50 transition-colors">
+                    <td class="p-6 font-bold text-brand-blue text-sm italic">
+                      #RES-2026
+                    </td>
+                    <td class="p-6">
+                      <span class="block text-sm font-black text-slate-700"
+                        >فرع التجمع الخامس</span
+                      >
+                      <span
+                        class="text-[9px] text-brand-red font-black uppercase"
+                        >V.I.P Table</span
+                      >
+                    </td>
+                    <td class="p-6">
+                      <span class="block text-sm font-black text-slate-700"
+                        >10 فبراير 2026</span
+                      >
+                      <span
+                        class="text-[10px] text-slate-400 font-bold uppercase"
+                        >08:00 PM</span
+                      >
+                    </td>
+                    <td class="p-6">
+                      <span
+                        class="inline-flex items-center gap-1 text-sm font-black text-brand-blue"
+                      >
+                        4
+                        <i
+                          class="fa-solid fa-users text-[10px] text-slate-300"
+                        ></i>
+                      </span>
+                    </td>
+                    <td class="p-6">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-black border border-emerald-100"
+                      >
+                        <i class="fa-solid fa-circle-check text-[8px]"></i>
+                        تم التأكيد
+                      </span>
+                    </td>
+                    <td class="p-6 text-center">
+                      <button
+                        class="w-10 h-10 rounded-xl bg-gray-50 text-slate-400 hover:bg-brand-red hover:text-white transition-all shadow-sm"
+                      >
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr class="group hover:bg-slate-50/50 transition-colors">
+                    <td class="p-6 font-bold text-brand-blue text-sm italic">
+                      #RES-2027
+                    </td>
+                    <td class="p-6">
+                      <span class="block text-sm font-black text-slate-700"
+                        >فرع الرحاب</span
+                      >
+                      <span
+                        class="text-[9px] text-slate-400 font-black uppercase"
+                        >عادي</span
+                      >
+                    </td>
+                    <td class="p-6">
+                      <span class="block text-sm font-black text-slate-700"
+                        >14 فبراير 2026</span
+                      >
+                      <span
+                        class="text-[10px] text-slate-400 font-bold uppercase"
+                        >09:30 PM</span
+                      >
+                    </td>
+                    <td class="p-6">
+                      <span
+                        class="inline-flex items-center gap-1 text-sm font-black text-brand-blue"
+                      >
+                        2
+                        <i
+                          class="fa-solid fa-users text-[10px] text-slate-300"
+                        ></i>
+                      </span>
+                    </td>
+                    <td class="p-6">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-600 text-[10px] font-black border border-amber-100"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"
+                        ></span>
+                        قيد المراجعة
+                      </span>
+                    </td>
+                    <td class="p-6 text-center">
+                      <button
+                        class="w-10 h-10 rounded-xl bg-gray-50 text-slate-400 hover:bg-brand-red hover:text-white transition-all shadow-sm"
+                      >
+                        <i class="fa-solid fa-xmark text-xs"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="p-6 bg-slate-50/30 border-t border-slate-50 flex items-center justify-between"
+            >
+              <span
+                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"
+                >عرض 2 حجز حالي</span
+              >
+              <div class="flex gap-2">
+                <button
+                  class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-red text-white text-xs font-black shadow-glow-red"
+                >
+                  1
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-brand-blue p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-xl shadow-brand-blue/20 group"
+          >
+            <div
+              class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-red/10 rounded-full blur-3xl group-hover:bg-brand-red/20 transition-all duration-700"
+            ></div>
+            <div class="relative z-10 text-right">
+              <h4 class="text-white text-2xl font-black mb-2">
+                خطط لمناسبتك القادمة معنا!
+              </h4>
+              <p class="text-white/60 text-sm font-medium italic">
+                احجز طاولتك المفضلة الآن واستمتع بخصم 10% على إجمالي الفاتورة.
+              </p>
+            </div>
+            <a
+              href="./book-table.html"
+              class="relative z-10 bg-brand-red text-white px-10 py-5 rounded-2xl font-black text-sm hover:bg-white hover:text-brand-blue transition-all shadow-xl active:scale-95"
+            >
+              احجز طاولة الآن <i class="fa-solid fa-utensils mr-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="bg-brand-blue text-white pt-20 pb-10 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl -z-0"
+      ></div>
+
+      <div class="container mx-auto px-4 lg:px-12 relative z-10">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+        >
+          <div class="space-y-6">
+            <div class="flex flex-col">
+              <span
+                class="text-3xl font-black tracking-tighter flex items-center gap-2"
+              >
+                <i class="fa-solid fa-burger text-brand-red"></i> Ordraty
+              </span>
+              <span
+                class="text-[10px] text-gray-400 tracking-[0.3em] uppercase -mt-1"
+                >Restaurant</span
+              >
+            </div>
+            <p class="text-gray-400 leading-relaxed text-sm">
+              نحن في أوردراتي نؤمن بأن الطعام هو لغة السعادة. نقدم لكم أجود
+              أنواع المشويات والوجبات الشرقية بأيادٍ خبيرة وشغف لا ينتهي.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-red hover:-translate-y-1 transition-all"
+              >
+                <i class="fa-brands fa-facebook-f text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-red hover:-translate-y-1 transition-all"
+              >
+                <i class="fa-brands fa-instagram text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-red hover:-translate-y-1 transition-all"
+              >
+                <i class="fa-brands fa-twitter text-sm"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-8 relative inline-block">
+              روابط سريعة
+              <span
+                class="absolute -bottom-2 right-0 w-8 h-1 bg-brand-red rounded-full"
+              ></span>
+            </h4>
+            <ul class="space-y-4 text-gray-400">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >قائمة الطعام</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >حجز طاولة</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >فروعنا</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >سياسة الخصوصية</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-8 relative inline-block">
+              ساعات العمل
+              <span
+                class="absolute -bottom-2 right-0 w-8 h-1 bg-brand-red rounded-full"
+              ></span>
+            </h4>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 text-gray-400">
+                <i class="fa-regular fa-clock text-brand-red"></i>
+                <div>
+                  <p class="text-white font-bold text-sm">يومياً</p>
+                  <p class="text-xs">10:00 AM - 10:00 PM</p>
+                </div>
+              </div>
+              <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
+                <p class="text-xs text-brand-red font-bold mb-1">
+                  خدمة التوصيل
+                </p>
+                <p class="text-[10px] text-gray-400">
+                  متاحة على مدار الساعة لجميع المناطق
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-8 relative inline-block">
+              تواصل معنا
+              <span
+                class="absolute -bottom-2 right-0 w-8 h-1 bg-brand-red rounded-full"
+              ></span>
+            </h4>
+            <ul class="space-y-5">
+              <li class="flex items-start gap-3 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0 group-hover:bg-brand-red transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-brand-red group-hover:text-white text-sm"
+                  ></i>
+                </div>
+                <span class="text-gray-400 text-sm leading-snug"
+                  >شارع الثورة، مدينة نصر، القاهرة</span
+                >
+              </li>
+              <li class="flex items-center gap-3 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0 group-hover:bg-brand-red transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-phone text-brand-red group-hover:text-white text-sm"
+                  ></i>
+                </div>
+                <span class="text-gray-400 text-sm" dir="ltr"
+                  >+01 1234567890</span
+                >
+              </li>
+              <li class="flex items-center gap-3 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0 group-hover:bg-brand-red transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-envelope text-brand-red group-hover:text-white text-sm"
+                  ></i>
+                </div>
+                <span class="text-gray-400 text-sm">demo@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"
+        >
+          <p>
+            © 2026 جميع الحقوق محفوظة لـ
+            <span class="text-white font-bold">مطعم أوردراتي</span>
+          </p>
+          <div class="flex items-center gap-2">
+            <span>Powered By</span>
+            <span
+              class="text-white font-black tracking-widest bg-white/5 px-3 py-1 rounded-lg border border-white/5"
+              >ISG</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/main.js">
+
+    </script>
+  </body>
+</html>

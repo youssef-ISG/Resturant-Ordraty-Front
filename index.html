@@ -24,204 +24,338 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
     />
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./dist/output.css" />
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                red: "#E31C25", // الأحمر (لون الزر الرئيسي)
-                blue: "#0F172A", // الأزرق الداكن (لون النصوص)
-                dark: "#1a1a1a",
-                light: "#f8f8f8",
-              },
-            },
-            fontFamily: {
-              sans: ["Cairo", "sans-serif"],
-            },
-            boxShadow: {
-              glow: "0 0 20px rgba(227, 28, 37, 0.3)",
-            },
-          },
-        },
-      };
-    </script>
-
-    <style>
-      /* Slider Height */
-      .hero-slide {
-        height: 90vh;
-        position: relative;
-        background-size: cover;
-        background-position: center;
-      }
-
-      /* Dark Overlay for Restaurant Vibe */
-      .overlay-dark {
-        background: linear-gradient(
-          rgba(15, 23, 42, 0.6),
-          rgba(15, 23, 42, 0.8)
-        );
-        position: absolute;
-        inset: 0;
-      }
-
-      /* Custom Dots */
-      .owl-theme .owl-dots {
-        position: absolute;
-        bottom: 40px;
-        width: 100%;
-        text-align: center;
-      }
-      .owl-theme .owl-dots .owl-dot span {
-        width: 12px;
-        height: 12px;
-        margin: 5px;
-        background: rgba(255, 255, 255, 0.4);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-      }
-      .owl-theme .owl-dots .owl-dot.active span {
-        background: #e31c25;
-        border-color: #e31c25;
-        transform: scale(1.3);
-      }
-    </style>
   </head>
   <body class="font-sans text-brand-blue bg-white">
     <header
-      class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300"
+      class="fixed w-full top-0 z-[100] bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300 border-b border-gray-100"
       id="navbar"
     >
       <div class="container mx-auto px-4 lg:px-12">
         <div class="flex justify-between items-center h-24">
-          <div class="flex items-center gap-2 cursor-pointer">
-            <div class="flex flex-col items-center">
-              <span
-                class="text-3xl font-extrabold text-brand-blue tracking-tighter flex items-center gap-2"
-              >
-                <i class="fa-solid fa-burger text-brand-red"></i> Ordraty
-              </span>
-              <span
-                class="text-[10px] text-gray-400 tracking-[0.3em] uppercase -mt-1 w-full text-center"
-                >Restaurant</span
-              >
-            </div>
+          <div class="flex items-center">
+            <a href="./" class="flex items-center gap-2 overflow-hidden">
+              <img
+                src="./images/logo.webp"
+                class="w-[130px] object-contain"
+                alt="Ordraty Logo"
+              />
+            </a>
           </div>
 
-          <nav class="hidden lg:flex items-center gap-6 font-bold text-base">
-            <a href="#" class="text-brand-red">الرئيسية</a>
-            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+          <nav
+            class="hidden lg:flex items-center gap-8 font-bold text-sm tracking-wide"
+          >
+            <a
+              href="./"
+              class="text-brand-red relative after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-1/2 after:h-0.5 after:bg-brand-red"
+              >الرئيسية</a
+            >
+            <a
+              href="./menu.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
               >قائمة الطعام</a
             >
-            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+            <a
+              href="./branchs.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
               >الفروع</a
             >
-            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+            <a
+              href="./contact.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
               >تواصل معنا</a
             >
-            <a href="#" class="text-brand-blue hover:text-brand-red transition"
+            <a
+              href="./about.html"
+              class="text-brand-blue hover:text-brand-red transition-colors"
               >عن المطعم</a
             >
           </nav>
 
-          <div class="hidden lg:flex items-center gap-4">
+          <div class="hidden lg:flex items-center gap-5">
             <div
-              class="flex items-center gap-3 text-gray-400 border-l pl-3 ml-1 border-gray-200"
+              class="flex items-center gap-4 text-gray-400 border-l pl-5 border-gray-100"
             >
-              <a
-                href="#"
-                class="hover:text-brand-red transition"
-                title="English / عربي"
+              <div class="relative group" id="lang-dropdown">
+                <button
+                  class="flex items-center gap-2 text-gray-500 hover:text-brand-red transition-all py-2 font-bold text-sm"
+                >
+                  <i class="fa-solid fa-globe text-lg"></i>
+                  <span>العربية</span>
+                  <i
+                    class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"
+                  ></i>
+                </button>
+                <div
+                  class="absolute top-full right-0 mt-2 w-40 bg-white shadow-2xl rounded-2xl border border-gray-50 py-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-[110]"
+                >
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 text-brand-blue hover:text-brand-red transition-all"
+                  >
+                    <img
+                      src="https://flagcdn.com/w20/eg.png"
+                      class="w-5 h-4 object-cover rounded-sm shadow-sm"
+                      alt="Arabic"
+                    />
+                    <span class="text-xs font-black">العربية</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 text-brand-blue hover:text-brand-red transition-all"
+                  >
+                    <img
+                      src="https://flagcdn.com/w20/us.png"
+                      class="w-5 h-4 object-cover rounded-sm shadow-sm"
+                      alt="English"
+                    />
+                    <span class="text-xs font-black">English</span>
+                  </a>
+                </div>
+              </div>
+
+              <button
+                class="hover:text-brand-red transition-colors"
+                title="بحث"
               >
-                <i class="fa-solid fa-globe text-lg"></i>
-              </a>
-              <a href="#" class="hover:text-brand-red transition" title="بحث">
                 <i class="fa-solid fa-magnifying-glass text-lg"></i>
-              </a>
+              </button>
             </div>
 
-            <div class="flex items-center gap-4 text-brand-blue">
+            <div class="flex items-center gap-5 text-brand-blue">
               <a
-                href="#"
-                class="hover:text-brand-red transition flex flex-col items-center group"
-                title="لوحة التحكم والأوردرات"
+                href="./orders.html"
+                class="hover:text-brand-red transition-all group"
+                title="الأوردرات"
               >
                 <i
-                  class="fa-solid fa-clipboard-list text-xl mb-0.5 group-hover:-translate-y-1 transition-transform"
+                  class="fa-solid fa-clipboard-list text-xl group-hover:-translate-y-1 transition-transform"
                 ></i>
               </a>
-
               <a
-                href="#"
-                class="hover:text-brand-red transition flex flex-col items-center group"
-                title="تسجيل الدخول"
+                href="./profile.html"
+                class="hover:text-brand-red transition-all group"
+                title="حسابي"
               >
                 <i
-                  class="fa-regular fa-user text-xl mb-0.5 group-hover:-translate-y-1 transition-transform"
+                  class="fa-regular fa-user text-xl group-hover:-translate-y-1 transition-transform"
                 ></i>
               </a>
-
-              <div class="relative cursor-pointer group mr-1">
-                <i
-                  class="fa-solid fa-bag-shopping text-xl hover:text-brand-red transition group-hover:-translate-y-1"
-                ></i>
-                <span
-                  class="absolute -top-1 -right-2 bg-brand-red text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full"
-                  >0</span
+              <div class="relative group" id="mini-cart-wrapper">
+                <button
+                  id="cart-icon-btn"
+                  class="relative cursor-pointer flex items-center justify-center w-10 h-10 rounded-xl hover:bg-gray-50 transition-all group/icon"
                 >
+                  <i
+                    class="fa-solid fa-bag-shopping text-xl text-brand-blue group-hover/icon:text-brand-red transition-all"
+                  ></i>
+                  <span
+                    class="absolute -top-1 -right-1 bg-brand-red text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-glow-red"
+                    >3</span
+                  >
+                </button>
+                <!-- cart popup -->
+                <div
+                  id="mini-cart-popup"
+                  class="hidden absolute top-full left-0 mt-4 w-[350px] bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 z-[120] overflow-hidden animate-in fade-in zoom-in slide-in-from-top-4 duration-300"
+                >
+                  <div
+                    class="p-6 border-b border-gray-50 flex justify-between items-center"
+                  >
+                    <h3
+                      class="font-black text-brand-blue text-sm uppercase tracking-widest"
+                    >
+                      طلباتك الحالية
+                    </h3>
+                    <span
+                      class="bg-red-50 text-brand-red px-3 py-1 rounded-lg text-[10px] font-black"
+                      >3 أطباق</span
+                    >
+                  </div>
+
+                  <div
+                    class="max-h-[320px] overflow-y-auto p-4 space-y-4 custom-mini-scroll"
+                  >
+                    <div
+                      class="flex gap-4 p-2 rounded-2xl hover:bg-gray-50 transition-colors group/item"
+                    >
+                      <div
+                        class="w-16 h-16 bg-red-50 rounded-xl p-2 flex-shrink-0"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=150"
+                          class="w-full h-full object-contain transform group-hover/item:scale-110 transition-transform"
+                        />
+                      </div>
+                      <div class="flex-1 text-right">
+                        <h4
+                          class="text-xs font-black text-brand-blue line-clamp-1"
+                        >
+                          تشيز برجر كلاسيك
+                        </h4>
+                        <p class="text-[10px] text-gray-400 mt-1">
+                          الكمية: 1 ×
+                          <span class="text-brand-red font-bold">145ج</span>
+                        </p>
+                      </div>
+                      <button
+                        class="text-gray-300 hover:text-brand-red transition-colors self-center"
+                      >
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                      </button>
+                    </div>
+
+                    <div
+                      class="flex gap-4 p-2 rounded-2xl hover:bg-gray-50 transition-colors group/item"
+                    >
+                      <div
+                        class="w-16 h-16 bg-orange-50 rounded-xl p-2 flex-shrink-0"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=150"
+                          class="w-full h-full object-contain transform group-hover/item:scale-110 transition-transform"
+                        />
+                      </div>
+                      <div class="flex-1 text-right">
+                        <h4
+                          class="text-xs font-black text-brand-blue line-clamp-1"
+                        >
+                          بيتزا ببروني
+                        </h4>
+                        <p class="text-[10px] text-gray-400 mt-1">
+                          الكمية: 2 ×
+                          <span class="text-brand-red font-bold">120ج</span>
+                        </p>
+                      </div>
+                      <button
+                        class="text-gray-300 hover:text-brand-red transition-colors self-center"
+                      >
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="p-6 bg-gray-50/50 border-t border-gray-100">
+                    <div class="flex justify-between items-center mb-6">
+                      <span
+                        class="text-gray-400 text-xs font-bold uppercase tracking-widest"
+                        >الإجمالي</span
+                      >
+                      <span class="text-xl font-black text-brand-blue"
+                        >385 <small class="text-[10px]">ج.م</small></span
+                      >
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                      <a
+                        href="./cart.html"
+                        class="bg-white text-brand-blue border border-gray-200 py-3 rounded-xl text-xs font-black text-center hover:bg-gray-50 transition-all shadow-sm"
+                        >عرض السلة</a
+                      >
+                      <a
+                        href="./checkout.html"
+                        class="bg-brand-red text-white py-3 rounded-xl text-xs font-black text-center hover:bg-brand-blue transition-all shadow-lg shadow-brand-red/20"
+                        >إتمام الطلب</a
+                      >
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
             <a
-              href="#"
-              class="bg-brand-red text-white px-6 py-2.5 rounded-full font-bold hover:bg-red-700 transition shadow-glow transform hover:-translate-y-0.5 mr-2"
+              href="./login.html"
+              class="bg-brand-red text-white px-7 py-3 rounded-full font-black text-xs hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/30 transform hover:-translate-y-0.5"
             >
-              اطلب أونلاين
+              تسجيل دخول
             </a>
           </div>
 
-          <button id="menu-btn" class="lg:hidden text-2xl text-brand-blue">
-            <i class="fa-solid fa-bars"></i>
+          <button
+            id="menu-btn"
+            class="lg:hidden w-12 h-12 rounded-2xl bg-gray-50 text-brand-blue flex items-center justify-center transition-all active:scale-90"
+          >
+            <i class="fa-solid fa-bars-staggered text-xl"></i>
           </button>
         </div>
       </div>
 
       <div
         id="mobile-menu"
-        class="hidden lg:hidden bg-white border-t absolute w-full left-0 shadow-lg h-screen overflow-y-auto pb-20"
+        class="hidden lg:hidden bg-white border-t absolute w-full left-0 shadow-2xl h-screen overflow-y-auto pb-32 animate-in slide-in-from-top duration-500"
       >
-        <div class="p-6 flex flex-col gap-4 font-bold text-gray-700">
-          <a href="#" class="text-brand-red">الرئيسية</a>
-          <a href="#">قائمة الطعام</a>
-          <a href="#">الفروع</a>
-          <a href="#">تواصل معنا</a>
-          <a href="#">عن المطعم</a>
-          <hr class="border-gray-100" />
+        <div class="p-6 flex flex-col gap-2 font-black text-brand-blue">
+          <a href="./" class="p-4 rounded-2xl bg-red-50 text-brand-red"
+            >الرئيسية</a
+          >
+          <a href="./menu.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >قائمة الطعام</a
+          >
+          <a href="./branchs.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >الفروع</a
+          >
+          <a href="./contact.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >تواصل معنا</a
+          >
+          <a href="./cart.html" class="p-4 rounded-2xl hover:bg-gray-50"
+            >سلة المشتريات</a
+          >
 
-          <a href="#" class="flex items-center gap-3 hover:text-brand-red">
-            <i class="fa-solid fa-clipboard-list text-xl w-6 text-center"></i>
-            متابعة الأوردرات
-          </a>
-          <a href="#" class="flex items-center gap-3 hover:text-brand-red">
-            <i class="fa-regular fa-user text-xl w-6 text-center"></i> تسجيل
-            الدخول
-          </a>
-          <a href="#" class="flex items-center gap-3 hover:text-brand-red">
-            <i class="fa-solid fa-globe text-xl w-6 text-center"></i> Change
-            Language
-          </a>
+          <div class="border-t border-gray-100 my-2 pt-2">
+            <button
+              id="mobile-lang-trigger"
+              class="w-full flex items-center justify-between p-4 text-brand-blue font-black rounded-2xl hover:bg-gray-50 transition-all"
+            >
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-globe text-xl text-gray-400"></i>
+                <span>اللغة (العربية)</span>
+              </div>
+              <i
+                class="fa-solid fa-chevron-left text-[10px] transition-transform duration-300"
+                id="mobile-lang-arrow"
+              ></i>
+            </button>
+            <div
+              id="mobile-lang-content"
+              class="hidden pr-14 flex flex-col gap-4 py-2"
+            >
+              <a href="#" class="text-sm text-gray-500 hover:text-brand-red"
+                >العربية</a
+              >
+              <a href="#" class="text-sm text-gray-500 hover:text-brand-red"
+                >English</a
+              >
+            </div>
+          </div>
+
+          <hr class="border-gray-50 my-2" />
+
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <a
+              href="./orders.html"
+              class="flex flex-col items-center gap-2 p-4 rounded-[2rem] bg-gray-50 hover:bg-white hover:shadow-md transition-all border border-gray-100"
+            >
+              <i class="fa-solid fa-clipboard-list text-xl text-brand-red"></i>
+              <span class="text-[10px] uppercase tracking-widest">طلباتي</span>
+            </a>
+            <a
+              href="./profile.html"
+              class="flex flex-col items-center gap-2 p-4 rounded-[2rem] bg-gray-50 hover:bg-white hover:shadow-md transition-all border border-gray-100"
+            >
+              <i class="fa-regular fa-user text-xl text-brand-red"></i>
+              <span class="text-[10px] uppercase tracking-widest">حسابي</span>
+            </a>
+          </div>
 
           <a
-            href="#"
-            class="bg-brand-red text-white py-3 rounded-full shadow-lg text-center mt-4"
-            >اطلب أونلاين</a
+            href="./login.html"
+            class="bg-brand-red text-white py-5 rounded-[2rem] shadow-xl shadow-brand-red/20 text-center mt-6 font-black text-lg"
           >
+            اطلب أونلاين الآن
+          </a>
         </div>
       </div>
     </header>
@@ -355,38 +489,672 @@
         </div>
       </div>
     </div>
+    <section class="py-16 bg-brand-light">
+      <div class="container mx-auto px-4 lg:px-12">
+        <div class="flex flex-col items-center text-center mb-10">
+          <span class="text-brand-red font-bold mb-2 tracking-widest"
+            >قائمتنا</span
+          >
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-brand-blue">
+            اكتشف تصنيفات الطعام
+          </h2>
+          <div class="w-20 h-1 bg-brand-red mt-4 rounded-full"></div>
+        </div>
 
-    <script>
-      $(document).ready(function () {
-        // Owl Carousel Initialization
-        $("#main-slider").owlCarousel({
-          rtl: true, // اتجاه عربي
-          items: 1,
-          loop: true,
-          autoplay: true,
-          autoplayTimeout: 5000,
-          smartSpeed: 800,
-          nav: false,
-          dots: true,
-          animateOut: "fadeOut", // تأثير تلاشي ناعم
-          mouseDrag: true,
-          touchDrag: true,
-        });
+        <div class="owl-carousel owl-theme" id="categories-carousel">
+          <div class="item p-4">
+            <a
+              href="#"
+              class="group block bg-white rounded-2xl p-6 shadow-sm border border-transparent hover:border-brand-red hover:shadow-glow transition-all duration-300 text-center"
+            >
+              <div
+                class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden group-hover:ring-4 group-hover:ring-brand-red/20 transition-all duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=200&h=200&fit=crop"
+                  alt="برجر"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <h3
+                class="font-bold text-brand-blue group-hover:text-brand-red transition-colors text-lg"
+              >
+                برجر
+              </h3>
+              <span class="text-xs text-gray-400 mt-1 block">15 صنف</span>
+            </a>
+          </div>
 
-        // Mobile Menu Toggle
-        $("#menu-btn").click(function () {
-          $("#mobile-menu").slideToggle(300);
-        });
+          <div class="item p-4">
+            <a
+              href="#"
+              class="group block bg-white rounded-2xl p-6 shadow-sm border border-transparent hover:border-brand-red hover:shadow-glow transition-all duration-300 text-center"
+            >
+              <div
+                class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden group-hover:ring-4 group-hover:ring-brand-red/20 transition-all duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=200&h=200&fit=crop"
+                  alt="بيتزا"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <h3
+                class="font-bold text-brand-blue group-hover:text-brand-red transition-colors text-lg"
+              >
+                بيتزا
+              </h3>
+              <span class="text-xs text-gray-400 mt-1 block">22 صنف</span>
+            </a>
+          </div>
 
-        // Sticky Header Logic (Optional enhancement)
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 10) {
-            $("#navbar").addClass("shadow-md");
-          } else {
-            $("#navbar").removeClass("shadow-md");
-          }
-        });
-      });
-    </script>
+          <div class="item p-4">
+            <a
+              href="#"
+              class="group block bg-white rounded-2xl p-6 shadow-sm border border-transparent hover:border-brand-red hover:shadow-glow transition-all duration-300 text-center"
+            >
+              <div
+                class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden group-hover:ring-4 group-hover:ring-brand-red/20 transition-all duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=200&h=200&fit=crop"
+                  alt="مشويات"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <h3
+                class="font-bold text-brand-blue group-hover:text-brand-red transition-colors text-lg"
+              >
+                مشويات
+              </h3>
+              <span class="text-xs text-gray-400 mt-1 block">10 أصناف</span>
+            </a>
+          </div>
+
+          <div class="item p-4">
+            <a
+              href="#"
+              class="group block bg-white rounded-2xl p-6 shadow-sm border border-transparent hover:border-brand-red hover:shadow-glow transition-all duration-300 text-center"
+            >
+              <div
+                class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden group-hover:ring-4 group-hover:ring-brand-red/20 transition-all duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=200&h=200&fit=crop"
+                  alt="شوربة"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <h3
+                class="font-bold text-brand-blue group-hover:text-brand-red transition-colors text-lg"
+              >
+                شوربة
+              </h3>
+              <span class="text-xs text-gray-400 mt-1 block">8 أصناف</span>
+            </a>
+          </div>
+
+          <div class="item p-4">
+            <a
+              href="#"
+              class="group block bg-white rounded-2xl p-6 shadow-sm border border-transparent hover:border-brand-red hover:shadow-glow transition-all duration-300 text-center"
+            >
+              <div
+                class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden group-hover:ring-4 group-hover:ring-brand-red/20 transition-all duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=200&h=200&fit=crop"
+                  alt="حلويات"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <h3
+                class="font-bold text-brand-blue group-hover:text-brand-red transition-colors text-lg"
+              >
+                حلويات
+              </h3>
+              <span class="text-xs text-gray-400 mt-1 block">12 صنف</span>
+            </a>
+          </div>
+
+          <div class="item p-4">
+            <a
+              href="#"
+              class="group block bg-white rounded-2xl p-6 shadow-sm border border-transparent hover:border-brand-red hover:shadow-glow transition-all duration-300 text-center"
+            >
+              <div
+                class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden group-hover:ring-4 group-hover:ring-brand-red/20 transition-all duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=200&h=200&fit=crop"
+                  alt="مشروبات"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <h3
+                class="font-bold text-brand-blue group-hover:text-brand-red transition-colors text-lg"
+              >
+                مشروبات
+              </h3>
+              <span class="text-xs text-gray-400 mt-1 block">20 صنف</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container mx-auto px-4 lg:px-12">
+        <div
+          class="flex flex-col lg:flex-row-reverse items-stretch bg-brand-light rounded-[2rem] overflow-hidden border border-gray-100"
+        >
+          <div class="lg:w-1/2 relative min-h-[300px]">
+            <img
+              src="images/resturant.jpg"
+              alt="Restaurant Table"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-brand-blue/20 backdrop-blur-[2px]"
+            ></div>
+
+            <div
+              class="absolute inset-0 flex flex-col justify-center items-center text-white p-8 text-center"
+            >
+              <h3 class="text-4xl font-extrabold mb-4 drop-shadow-lg">
+                في انتظاركم
+              </h3>
+              <p class="text-lg font-medium drop-shadow-md">
+                احجز مكانك الآن واستمتع بأجواء لا تُنسى
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center">
+            <div class="mb-10 text-right">
+              <span
+                class="text-brand-red font-bold mb-2 block tracking-widest uppercase text-sm"
+                >أهلاً بك</span
+              >
+              <h2 class="text-3xl lg:text-4xl font-extrabold text-brand-blue">
+                حجز طاولة
+              </h2>
+              <div class="w-16 h-1 bg-brand-red mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="relative custom-select-wrapper">
+                <label class="block text-brand-blue font-bold mb-3 mr-2"
+                  >من فضلك اختر الفرع</label
+                >
+                <div
+                  class="custom-select-trigger bg-white border border-gray-200 rounded-2xl px-5 py-4 flex items-center justify-between cursor-pointer hover:border-brand-red transition-all shadow-sm"
+                >
+                  <span class="text-gray-400">اختر الفرع...</span>
+                  <i class="fa-solid fa-location-dot text-brand-red"></i>
+                </div>
+                <div
+                  class="custom-options hidden absolute w-full mt-2 bg-white border border-gray-100 rounded-2xl shadow-xl z-50 overflow-hidden"
+                >
+                  <div
+                    class="option px-5 py-3 hover:bg-red-50 cursor-pointer flex items-center gap-3 transition-colors"
+                    data-value="nasr-city"
+                  >
+                    فرع مدينة نصر
+                  </div>
+                  <div
+                    class="option px-5 py-3 hover:bg-red-50 cursor-pointer flex items-center gap-3 transition-colors"
+                    data-value="maadi"
+                  >
+                    فرع المعادي
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative custom-select-wrapper">
+                <label class="block text-brand-blue font-bold mb-3 mr-2"
+                  >نوع الطاولة</label
+                >
+                <div
+                  class="custom-select-trigger bg-white border border-gray-200 rounded-2xl px-5 py-4 flex items-center justify-between cursor-pointer hover:border-brand-red transition-all shadow-sm"
+                >
+                  <span class="text-gray-400">اختر نوع الطاولة...</span>
+                  <i class="fa-solid fa-chair text-brand-red"></i>
+                </div>
+                <div
+                  class="custom-options hidden absolute w-full mt-2 bg-white border border-gray-100 rounded-2xl shadow-xl z-50 overflow-hidden"
+                >
+                  <div
+                    class="option px-5 py-3 hover:bg-red-50 cursor-pointer flex items-center gap-3 transition-colors"
+                    data-value="window"
+                  >
+                    طاولة بجانب النافذة
+                  </div>
+                  <div
+                    class="option px-5 py-3 hover:bg-red-50 cursor-pointer flex items-center gap-3 transition-colors"
+                    data-value="vip"
+                  >
+                    ركن الـ VIP
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-6">
+                <a
+                  href="./table.html"
+                  class="w-full bg-brand-red text-white py-5 rounded-2xl font-bold text-xl hover:bg-red-700 hover:shadow-glow transition-all flex items-center justify-center gap-3 group"
+                >
+                  تأكيد الحجز
+                  <i
+                    class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-20 bg-[#fbfbfb]">
+      <div class="container mx-auto px-4 lg:px-12">
+        <div
+          class="flex flex-col md:flex-row justify-between items-items mb-12 gap-6"
+        >
+          <div class="text-right">
+            <h2
+              class="text-3xl lg:text-4xl font-extrabold text-brand-blue leading-tight"
+            >
+              آراء نعتز بها
+            </h2>
+            <p class="text-gray-400 mt-2 font-medium">
+              ماذا يقول عملاء مطعم أوردراتي عن تجربتهم؟
+            </p>
+          </div>
+
+          <div
+            class="bg-white px-8 py-4 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-6"
+          >
+            <div class="flex flex-col items-center">
+              <span class="text-2xl font-bold text-brand-blue">3.5</span>
+              <div class="flex gap-0.5 text-yellow-400 text-[10px]">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star-half-stroke"></i
+                ><i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+            <div class="h-8 w-px bg-gray-100"></div>
+            <button
+              class="text-brand-red font-bold hover:underline flex items-center gap-2 text-sm"
+            >
+              <a href="./add-rating.html">
+                أضف تقييمك <i class="fa-solid fa-plus-circle"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div class="owl-carousel owl-theme" id="creative-reviews-carousel">
+          <div class="item p-2">
+            <div
+              class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 relative group"
+            >
+              <i
+                class="fa-solid fa-quote-right text-brand-red/10 text-4xl absolute top-0 right-6"
+              ></i>
+
+              <div class="relative z-10">
+                <p
+                  class="text-gray-500 leading-relaxed text-right mb-8 text-base font-medium h-[4.5rem] line-clamp-3 overflow-hidden"
+                >
+                  "تجربة رائعة جداً، الأكل وصل سخن والطعم كان مميز جداً خاصة
+                  البرجر المشوي، والخدمة كانت سريعة جداً."
+                </p>
+
+                <div class="flex items-center justify-end gap-4">
+                  <div class="text-right">
+                    <h4 class="font-bold text-brand-blue text-lg">علا محمد</h4>
+                    <div
+                      class="flex justify-end gap-0.5 text-yellow-400 text-[10px] mt-1"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&h=150&fit=crop"
+                      alt="Customer Photo"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="item p-2">
+            <div
+              class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 relative group"
+            >
+              <i
+                class="fa-solid fa-quote-right text-brand-red/10 text-4xl absolute top-0 right-6"
+              ></i>
+              <div class="relative z-10">
+                <p
+                  class="text-gray-500 leading-relaxed text-right mb-8 text-base font-medium h-[4.5rem] line-clamp-3 overflow-hidden"
+                >
+                  "الخدمة ممتازة والفرع نظيف جداً، والأسعار مناسبة جداً للجودة،
+                  أنصح الجميع بتجربة منسف اللحم."
+                </p>
+                <div class="flex items-center justify-end gap-4">
+                  <div class="text-right">
+                    <h4 class="font-bold text-brand-blue text-lg">أحمد خالد</h4>
+                    <div
+                      class="flex justify-end gap-0.5 text-yellow-400 text-[10px] mt-1"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-regular fa-star"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&h=150&fit=crop"
+                      alt="Customer Photo"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-3 mt-10">
+          <button
+            class="review-prev w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:bg-brand-red hover:border-brand-red hover:text-white transition-all"
+          >
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+          <button
+            class="review-next w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:bg-brand-red hover:border-brand-red hover:text-white transition-all"
+          >
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-white overflow-hidden">
+      <div class="container mx-auto px-4 lg:px-12">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+          <div class="lg:w-1/2 relative">
+            <div
+              class="relative z-10 w-4/5 rounded-[3rem] overflow-hidden shadow-2xl transform hover:-rotate-2 transition-transform duration-500"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000&auto=format&fit=crop"
+                alt="Authentic Food"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <div
+              class="absolute -bottom-10 -left-6 z-20 w-1/2 aspect-square rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl hidden md:block transform hover:scale-105 transition-transform duration-500"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=500&auto=format&fit=crop"
+                alt="Our Kitchen"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <div
+              class="absolute -top-10 -right-10 w-64 h-64 bg-red-50 rounded-full blur-3xl -z-10 opacity-60"
+            ></div>
+          </div>
+
+          <div class="lg:w-1/2 text-right">
+            <div class="mb-8">
+              <span
+                class="text-brand-red font-bold mb-3 block tracking-widest uppercase text-sm"
+                >قصتنا منذ البداية</span
+              >
+              <h2
+                class="text-4xl lg:text-5xl font-extrabold text-brand-blue leading-tight"
+              >
+                نحن لا نقدم مجرد طعام، <br />
+                بل نصنع <span class="text-brand-red">ذكريات</span>
+              </h2>
+              <div class="w-24 h-1.5 bg-brand-red mt-6 rounded-full"></div>
+            </div>
+
+            <p class="text-gray-500 text-lg leading-relaxed mb-10 font-medium">
+              في أوردراتي، نمزج بين أصالة النكهات الشرقية وبين اللمسة العصرية في
+              التقديم. كل طبق يخرج من مطبخنا هو حكاية بدأت باختيار أجود المكونات
+              الطازجة وانتهت بابتسامة رضا على وجوه عملائنا. نحن هنا لنلبي شغفك
+              بأفضل خدمة وأجواء مريحة.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 mb-12">
+              <div class="flex items-center gap-4 justify-end">
+                <span class="font-bold text-brand-blue">نكهات أصلية</span>
+                <div
+                  class="w-10 h-10 bg-red-50 text-brand-red rounded-xl flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-pepper-hot"></i>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 justify-end">
+                <span class="font-bold text-brand-blue">شيفات عالميين</span>
+                <div
+                  class="w-10 h-10 bg-red-50 text-brand-red rounded-xl flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-hat-chef"></i>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="#"
+              class="inline-flex items-center gap-3 bg-brand-blue text-white px-10 py-4 rounded-2xl font-bold hover:bg-brand-red hover:shadow-glow transition-all group"
+            >
+              اكتشف المزيد
+              <i
+                class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="bg-brand-blue text-white pt-20 pb-10 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl -z-0"
+      ></div>
+
+      <div class="container mx-auto px-4 lg:px-12 relative z-10">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+        >
+          <div class="space-y-6">
+            <div class="flex flex-col">
+              <span
+                class="text-3xl font-black tracking-tighter flex items-center gap-2"
+              >
+                <i class="fa-solid fa-burger text-brand-red"></i> Ordraty
+              </span>
+              <span
+                class="text-[10px] text-gray-400 tracking-[0.3em] uppercase -mt-1"
+                >Restaurant</span
+              >
+            </div>
+            <p class="text-gray-400 leading-relaxed text-sm">
+              نحن في أوردراتي نؤمن بأن الطعام هو لغة السعادة. نقدم لكم أجود
+              أنواع المشويات والوجبات الشرقية بأيادٍ خبيرة وشغف لا ينتهي.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-red hover:-translate-y-1 transition-all"
+              >
+                <i class="fa-brands fa-facebook-f text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-red hover:-translate-y-1 transition-all"
+              >
+                <i class="fa-brands fa-instagram text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-red hover:-translate-y-1 transition-all"
+              >
+                <i class="fa-brands fa-twitter text-sm"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-8 relative inline-block">
+              روابط سريعة
+              <span
+                class="absolute -bottom-2 right-0 w-8 h-1 bg-brand-red rounded-full"
+              ></span>
+            </h4>
+            <ul class="space-y-4 text-gray-400">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >قائمة الطعام</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >حجز طاولة</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >فروعنا</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-red hover:pr-2 transition-all block"
+                  >سياسة الخصوصية</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-8 relative inline-block">
+              ساعات العمل
+              <span
+                class="absolute -bottom-2 right-0 w-8 h-1 bg-brand-red rounded-full"
+              ></span>
+            </h4>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 text-gray-400">
+                <i class="fa-regular fa-clock text-brand-red"></i>
+                <div>
+                  <p class="text-white font-bold text-sm">يومياً</p>
+                  <p class="text-xs">10:00 AM - 10:00 PM</p>
+                </div>
+              </div>
+              <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
+                <p class="text-xs text-brand-red font-bold mb-1">
+                  خدمة التوصيل
+                </p>
+                <p class="text-[10px] text-gray-400">
+                  متاحة على مدار الساعة لجميع المناطق
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-8 relative inline-block">
+              تواصل معنا
+              <span
+                class="absolute -bottom-2 right-0 w-8 h-1 bg-brand-red rounded-full"
+              ></span>
+            </h4>
+            <ul class="space-y-5">
+              <li class="flex items-start gap-3 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0 group-hover:bg-brand-red transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-brand-red group-hover:text-white text-sm"
+                  ></i>
+                </div>
+                <span class="text-gray-400 text-sm leading-snug"
+                  >شارع الثورة، مدينة نصر، القاهرة</span
+                >
+              </li>
+              <li class="flex items-center gap-3 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0 group-hover:bg-brand-red transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-phone text-brand-red group-hover:text-white text-sm"
+                  ></i>
+                </div>
+                <span class="text-gray-400 text-sm" dir="ltr"
+                  >+01 1234567890</span
+                >
+              </li>
+              <li class="flex items-center gap-3 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0 group-hover:bg-brand-red transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-envelope text-brand-red group-hover:text-white text-sm"
+                  ></i>
+                </div>
+                <span class="text-gray-400 text-sm">demo@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"
+        >
+          <p>
+            © 2026 جميع الحقوق محفوظة لـ
+            <span class="text-white font-bold">مطعم أوردراتي</span>
+          </p>
+          <div class="flex items-center gap-2">
+            <span>Powered By</span>
+            <span
+              class="text-white font-black tracking-widest bg-white/5 px-3 py-1 rounded-lg border border-white/5"
+              >ISG</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/home.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
