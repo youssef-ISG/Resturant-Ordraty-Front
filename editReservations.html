@@ -360,61 +360,102 @@
       </div>
     </header>
 
-    <section class="order_details_section bg-[#fcfcfc] py-36 px-4" dir="rtl">
+    <section class="reservation_edit_section bg-[#fcfcfc] py-36 px-4" dir="rtl">
       <div class="container mx-auto max-w-4xl">
+        <div class="mb-8 flex justify-start">
+          <a
+            href="reservations.html"
+            class="flex items-center gap-2 bg-white border border-gray-100 px-6 py-2.5 rounded-2xl text-brand-blue font-bold shadow-sm hover:text-brand-red hover:border-brand-red transition-all group"
+          >
+            <i
+              class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+            ></i>
+            رجوع
+          </a>
+        </div>
+
         <div
           class="relative bg-white rounded-[3.5rem] p-8 md:p-14 shadow-2xl shadow-slate-200/50 border border-gray-50 overflow-hidden"
         >
-          <div class="text-center mb-12 relative z-10">
-            <h2 class="text-3xl lg:text-4xl font-black text-brand-blue mb-3">
-              تفاصيل الاستلام
-            </h2>
-            <p class="text-gray-400 font-medium text-sm">
-              أكمل البيانات التالية لضمان وصول طلبك في أفضل حال
-            </p>
+          <div
+            class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-gray-50 pb-8"
+          >
+            <div class="text-right">
+              <h2 class="text-3xl font-black text-brand-blue mb-2">
+                تعديل بيانات الحجز
+              </h2>
+              <p class="text-gray-400 font-medium text-sm">
+                يمكنك تحديث تفاصيل طاولة الحجز الخاصة بك
+              </p>
+            </div>
+            <div
+              class="bg-brand-red/5 text-brand-red px-6 py-3 rounded-2xl font-black text-sm border border-brand-red/10"
+            >
+              رقم الحجز: #RES-2026
+            </div>
           </div>
 
-          <form id="delivery-scheduling-form" class="space-y-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form id="edit-reservation-form" class="space-y-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div class="space-y-2">
                 <label
                   class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
-                  >الاسم الأول *</label
+                  >من فضلك اختر الفرع *</label
                 >
                 <div class="relative group">
-                  <input
-                    type="text"
-                    name="first_name"
+                  <select
+                    name="branch_id"
                     required
-                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
-                    placeholder="محمد"
-                  />
+                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-5 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none appearance-none font-bold text-brand-blue cursor-pointer transition-all"
+                  >
+                    <option value="1">فرع التجمع الخامس</option>
+                    <option value="2">فرع الرحاب</option>
+                  </select>
                   <i
-                    class="fa-regular fa-user absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                    class="fa-solid fa-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"
                   ></i>
                 </div>
               </div>
               <div class="space-y-2">
                 <label
                   class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
-                  >اسم العائلة *</label
+                  >من فضلك اختر الطاولة *</label
                 >
                 <div class="relative group">
-                  <input
-                    type="text"
-                    name="last_name"
+                  <select
+                    name="table_id"
                     required
-                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
-                    placeholder="أحمد"
-                  />
+                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-5 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none appearance-none font-bold text-brand-blue cursor-pointer transition-all"
+                  >
+                    <option value="1">طاولة 2 أفراد (متاحة)</option>
+                    <option value="2">طاولة VIP (متاحة)</option>
+                  </select>
                   <i
-                    class="fa-regular fa-user absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                    class="fa-solid fa-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"
                   ></i>
                 </div>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-2">
+                <label
+                  class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
+                  >الاسم الكامل *</label
+                >
+                <div class="relative group">
+                  <input
+                    type="text"
+                    name="full_name"
+                    value=""
+                    required
+                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
+                  />
+                  <i
+                    class="fa-regular fa-user absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                  ></i>
+                </div>
+              </div>
               <div class="space-y-2">
                 <label
                   class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
@@ -424,16 +465,19 @@
                   <input
                     type="tel"
                     name="phone"
+                    value=""
                     required
                     class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue text-right"
                     dir="ltr"
-                    placeholder="01xxxxxxxxx"
                   />
                   <i
                     class="fa-solid fa-phone-flip absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
                   ></i>
                 </div>
               </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div class="space-y-2">
                 <label
                   class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
@@ -443,55 +487,30 @@
                   <input
                     type="email"
                     name="email"
+                    value=""
                     class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
-                    placeholder="example@mail.com"
                   />
                   <i
                     class="fa-regular fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
                   ></i>
                 </div>
               </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
                 <label
                   class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
-                  >نوع التوصيل *</label
-                >
-                <div class="relative group">
-                  <select
-                    name="delivery_type"
-                    required
-                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-5 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none appearance-none font-bold text-brand-blue cursor-pointer"
-                  >
-                    <option value="home">توصيل للمنزل</option>
-                    <option value="branch">استلام من الفرع</option>
-                  </select>
-                  <i
-                    class="fa-solid fa-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"
-                  ></i>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <label
-                  class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
-                  >تاريخ التوصيل *</label
+                  >عدد الأشخاص *</label
                 >
                 <div class="relative group">
                   <input
-                    type="date"
-                    name="delivery_date"
-                    id="delivery_date"
+                    type="number"
+                    name="guests_count"
+                    value=""
+                    min="1"
                     required
-                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 pl-5 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue appearance-none"
+                    class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
                   />
                   <i
-                    class="fa-regular fa-calendar-days absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors pointer-events-none"
-                  ></i>
-
-                  <i
-                    class="fa-solid fa-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 text-[10px] pointer-events-none"
+                    class="fa-solid fa-users-viewfinder absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
                   ></i>
                 </div>
               </div>
@@ -500,93 +519,32 @@
             <div class="space-y-2">
               <label
                 class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
-                >المنطقة *</label
-              >
-              <div class="relative group flex flex-col -space-y-px">
-                <div class="relative">
-                  <input
-                    type="text"
-                    name="search_area"
-                    class="w-full bg-gray-50 border border-gray-100 rounded-t-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
-                    placeholder="ابحث عن المنطقة..."
-                  />
-                  <i
-                    class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
-                  ></i>
-                </div>
-
-                <div class="relative">
-                  <select
-                    name="area_id"
-                    required
-                    class="w-full bg-gray-50 border border-gray-100 rounded-b-2xl py-4 pr-12 px-5 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none appearance-none font-bold text-brand-blue cursor-pointer"
-                  >
-                    <option value="">اختر المنطقة</option>
-                  </select>
-                  <i
-                    class="fa-solid fa-location-dot absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"
-                  ></i>
-                  <i
-                    class="fa-solid fa-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"
-                  ></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <label
-                class="text-[11px] font-black text-slate-400 mr-2 uppercase tracking-widest"
-                >عنوان التوصيل *</label
+                >تاريخ ووقت الحجز *</label
               >
               <div class="relative group">
                 <input
-                  type="text"
-                  name="address"
+                  type="datetime-local"
+                  name="reservation_datetime"
+                  value=""
                   required
-                  class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
-                  placeholder="الرحاب واحد - شارع واحد عمارة 96"
+                  class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pr-12 pl-5 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all font-bold text-brand-blue"
                 />
                 <i
-                  class="fa-solid fa-map-pin absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
+                  class="fa-regular fa-calendar-check absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-brand-red transition-colors"
                 ></i>
               </div>
             </div>
 
-            <div class="space-y-3">
-              <label
-                class="text-sm font-black text-brand-blue mr-2 uppercase tracking-widest"
-                >ملاحظات (اختياري)</label
-              >
-              <div class="relative group">
-                <textarea
-                  name="order_notes"
-                  rows="3"
-                  class="w-full bg-gray-50 border border-gray-100 rounded-[2rem] py-4 pr-12 pl-6 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all resize-none font-medium text-brand-blue shadow-inner"
-                  placeholder="أي ملاحظات إضافية بخصوص طلبك..."
-                ></textarea>
-                <i
-                  class="fa-regular fa-comment-dots absolute right-4 top-5 text-gray-300 group-focus-within:text-brand-red transition-colors"
-                ></i>
-              </div>
-            </div>
-
-            <div class="pt-6 border-t border-gray-50">
+            <div class="pt-8 border-t border-gray-50">
               <button
                 type="submit"
                 class="w-full bg-brand-red text-white py-6 rounded-[2rem] font-black text-lg flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-brand-red/30 hover:-translate-y-1 transition-all active:scale-95 group"
               >
-                <span>تأكيد الطلب والمتابعة</span>
+                <span>تحديث بيانات الحجز</span>
                 <i
-                  class="fa-solid fa-paper-plane text-sm transition-transform group-hover:-translate-x-2"
+                  class="fa-solid fa-check-to-slot text-sm transition-transform group-hover:scale-110"
                 ></i>
               </button>
-              <a
-                href="cart.html"
-                class="block text-center mt-6 text-slate-400 font-bold text-xs hover:text-brand-red transition-colors"
-              >
-                <i class="fa-solid fa-rotate-right mr-1"></i> العودة لتعديل
-                السلة
-              </a>
             </div>
           </form>
         </div>
@@ -771,6 +729,5 @@
       </div>
     </footer>
     <script src="./js/main.js"></script>
-    <script src="./js/orderInfo.js"></script>
   </body>
 </html>
