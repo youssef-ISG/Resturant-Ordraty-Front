@@ -375,115 +375,73 @@
             class="fixed inset-0 bg-brand-blue/40 backdrop-blur-sm z-[100] hidden opacity-0 transition-opacity duration-300 lg:hidden"
           ></div>
 
-          <aside
-            id="menu-sidebar"
-            class="fixed inset-y-0 right-0 w-[300px] bg-white z-[101] p-6 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out lg:static lg:w-1/4 lg:p-0 lg:bg-transparent lg:translate-x-0 lg:shadow-none space-y-8 overflow-y-auto lg:overflow-visible"
-          >
-            <div
-              class="lg:hidden flex justify-between items-center mb-8 border-b pb-4"
-            >
-              <h3 class="font-black text-brand-blue">قائمة التصفية</h3>
-              <button
-                id="close-sidebar"
-                class="w-10 h-10 rounded-xl bg-gray-50 text-slate-400 hover:text-brand-red flex items-center justify-center"
-              >
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
+<aside
+  id="menu-sidebar"
+  class="fixed inset-y-0 right-0 w-[300px] bg-white z-[101] p-6 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out lg:static lg:w-1/4 lg:p-0 lg:bg-transparent lg:translate-x-0 lg:shadow-none space-y-8 overflow-y-auto lg:overflow-visible"
+>
+  <div class="lg:hidden flex justify-between items-center mb-8 border-b pb-4">
+    <h3 class="font-black text-brand-blue">قائمة التصفية</h3>
+    <button
+      id="close-sidebar"
+      class="w-10 h-10 rounded-xl bg-gray-50 text-slate-400 hover:text-brand-red flex items-center justify-center"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
 
-            <div
-              class="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm"
-            >
-              <h3
-                class="text-xl font-bold text-brand-blue mb-6 flex items-center gap-3"
-              >
-                <i class="fa-solid fa-utensils text-brand-red"></i> التصنيفات
-              </h3>
-              <ul class="space-y-3" id="menu-accordion">
-                <li>
-                  <button
-                    class="w-full flex items-center justify-between p-4 rounded-2xl bg-brand-red text-white shadow-glow"
-                  >
-                    <span class="font-bold">الكل</span>
-                    <span class="bg-white/20 px-2 py-0.5 rounded-lg text-xs"
-                      >45</span
-                    >
-                  </button>
-                </li>
-                <li class="accordion-item">
-                  <button
-                    class="accordion-trigger w-full flex items-center justify-between p-4 rounded-2xl text-gray-500 hover:bg-red-50 hover:text-brand-red transition-all group"
-                  >
-                    <div class="flex items-center gap-3">
-                      <i
-                        class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 arrow-icon"
-                      ></i>
+  <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm">
+    <h3 class="text-xl font-bold text-brand-blue mb-6 flex items-center gap-3">
+      <i class="fa-solid fa-utensils text-brand-red"></i> التصنيفات
+    </h3>
+    
+    <ul class="space-y-3" id="menu-categories">
+      <li>
+        <button
+          class="w-full flex items-center justify-between p-4 rounded-2xl bg-brand-red text-white shadow-glow transition-all active:scale-95"
+        >
+          <span class="font-bold text-sm">الكل</span>
+          <span class="bg-white/20 px-2 py-0.5 rounded-lg text-[10px] font-black">45</span>
+        </button>
+      </li>
 
-                      <span class="font-bold">برجر</span>
-                    </div>
+      <li>
+        <button
+          class="w-full flex items-center justify-between p-4 rounded-2xl text-gray-500 hover:bg-red-50 hover:text-brand-red transition-all group active:scale-95 border border-transparent hover:border-red-100"
+        >
+          <span class="font-bold text-sm">برجر</span>
+          <span class="bg-gray-100 group-hover:bg-brand-red/10 px-2 py-0.5 rounded-lg text-[10px] font-black transition-colors">12</span>
+        </button>
+      </li>
 
-                    <span
-                      class="bg-gray-100 group-hover:bg-brand-red/10 px-2 py-0.5 rounded-lg text-xs"
-                      >12</span
-                    >
-                  </button>
+      <li>
+        <button
+          class="w-full flex items-center justify-between p-4 rounded-2xl text-gray-500 hover:bg-red-50 hover:text-brand-red transition-all group active:scale-95 border border-transparent hover:border-red-100"
+        >
+          <span class="font-bold text-sm">بيتزا</span>
+          <span class="bg-gray-100 group-hover:bg-brand-red/10 px-2 py-0.5 rounded-lg text-[10px] font-black transition-colors">18</span>
+        </button>
+      </li>
 
-                  <div class="submenu hidden pr-10 pl-4 py-2 space-y-2">
-                    <a
-                      href="#"
-                      class="block text-sm text-gray-400 hover:text-brand-red transition-colors"
-                      >برجر لحم</a
-                    >
+      <li>
+        <button
+          class="w-full flex items-center justify-between p-4 rounded-2xl text-gray-500 hover:bg-red-50 hover:text-brand-red transition-all group active:scale-95 border border-transparent hover:border-red-100"
+        >
+          <span class="font-bold text-sm">باستا</span>
+          <span class="bg-gray-100 group-hover:bg-brand-red/10 px-2 py-0.5 rounded-lg text-[10px] font-black transition-colors">9</span>
+        </button>
+      </li>
 
-                    <a
-                      href="#"
-                      class="block text-sm text-gray-400 hover:text-brand-red transition-colors"
-                      >برجر دجاج</a
-                    >
-
-                    <a
-                      href="#"
-                      class="block text-sm text-gray-400 hover:text-brand-red transition-colors"
-                      >برجر عائلي</a
-                    >
-                  </div>
-                </li>
-
-                <li class="accordion-item">
-                  <button
-                    class="accordion-trigger w-full flex items-center justify-between p-4 rounded-2xl text-gray-500 hover:bg-red-50 hover:text-brand-red transition-all group"
-                  >
-                    <div class="flex items-center gap-3">
-                      <i
-                        class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 arrow-icon"
-                      ></i>
-
-                      <span class="font-bold">بيتزا</span>
-                    </div>
-
-                    <span
-                      class="bg-gray-100 group-hover:bg-brand-red/10 px-2 py-0.5 rounded-lg text-xs"
-                      >18</span
-                    >
-                  </button>
-
-                  <div class="submenu hidden pr-10 pl-4 py-2 space-y-2">
-                    <a
-                      href="#"
-                      class="block text-sm text-gray-400 hover:text-brand-red transition-colors"
-                      >بيتزا إيطالية</a
-                    >
-
-                    <a
-                      href="#"
-                      class="block text-sm text-gray-400 hover:text-brand-red transition-colors"
-                      >بيتزا شرقية</a
-                    >
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </aside>
+      <li>
+        <button
+          class="w-full flex items-center justify-between p-4 rounded-2xl text-gray-500 hover:bg-red-50 hover:text-brand-red transition-all group active:scale-95 border border-transparent hover:border-red-100"
+        >
+          <span class="font-bold text-sm">مقبلات</span>
+          <span class="bg-gray-100 group-hover:bg-brand-red/10 px-2 py-0.5 rounded-lg text-[10px] font-black transition-colors">15</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</aside>
 
           <div class="lg:w-3/4">
             <div
