@@ -179,7 +179,6 @@
 
                   <div
                     class="max-h-[380px] overflow-y-auto p-4 space-y-4 custom-mini-scroll"
-                    dir="rtl"
                   >
                     <div
                       class="relative flex gap-4 p-3 rounded-3xl hover:bg-gray-50 transition-colors group/item border border-transparent hover:border-gray-100"
@@ -192,7 +191,7 @@
                           class="w-full h-full object-contain group-hover/item:scale-110 transition-transform"
                         />
                       </div>
-                      <div class="flex-1 text-right">
+                      <div class="flex-1">
                         <h4 class="text-xs font-black text-brand-blue mb-1">
                           تشيز برجر كلاسيك
                         </h4>
@@ -245,7 +244,7 @@
                         />
                       </div>
 
-                      <div class="flex-1 text-right">
+                      <div class="flex-1">
                         <h4 class="text-xs font-black text-slate-400 mb-1">
                           بيتزا ببروني
                         </h4>
@@ -463,7 +462,7 @@
                     disabled
                     class="w-full flex items-center justify-between p-4 rounded-2xl text-slate-300 bg-slate-50/50 border border-dashed border-slate-200 cursor-not-allowed opacity-70"
                   >
-                    <div class="flex flex-col text-right">
+                    <div class="flex flex-col">
                       <span class="font-bold text-sm">بيتزا</span>
                       <span
                         class="text-[8px] font-black text-brand-red uppercase tracking-tighter"
@@ -604,8 +603,8 @@
                   disabled
                   class="w-full bg-slate-100 text-slate-400 py-4 rounded-2xl text-xs font-bold flex items-center justify-center gap-2 cursor-not-allowed border border-slate-200"
                 >
-                  <i class="fa-solid fa-bell-concierge"></i> 
-                    غير متوفر حالياً
+                  <i class="fa-solid fa-bell-concierge"></i>
+                  غير متوفر حالياً
                 </button>
               </div>
 
@@ -655,7 +654,10 @@
                   data-id="102"
                   data-name="بيتزا ببروني"
                   data-category="بيتزا"
-                  data-variants='[{"id":"v2-1","name":"وسط","price":140},{"id":"v2-2","name":"كبير","price":210}]'
+data-variants='[
+    {"id":"v2-1","name":"وسط","price":140, "stock": 10},
+    {"id":"v2-2","name":"كبير","price":210, "stock": 0}
+  ]'
                 >
                   <i class="fa-solid fa-cart-plus"></i> أضف للطلب
                 </button>
@@ -1127,9 +1129,7 @@
                     class="fa-solid fa-phone text-brand-red group-hover:text-white text-sm"
                   ></i>
                 </div>
-                <span class="text-gray-400 text-sm" dir="ltr"
-                  >+01 1234567890</span
-                >
+                <span class="text-gray-400 text-sm">+01 1234567890</span>
               </li>
               <li class="flex items-center gap-3 group">
                 <div
@@ -1172,7 +1172,7 @@
     >
       <div
         id="product-modal-content"
-        class="bg-white w-full max-w-5xl max-h-[90vh] rounded-[1rem] overflow-y-auto relative animate-in fade-in zoom-in duration-300 shadow-2xl"
+        class="bg-white w-full max-w-5xl max-h-[90vh] rounded-[2.5rem] overflow-y-auto relative animate-in fade-in zoom-in duration-300 shadow-2xl"
       >
         <button
           type="button"
@@ -1199,8 +1199,8 @@
               ></div>
             </div>
 
-            <div class="lg:col-span-7 flex flex-col">
-              <div class="flex flex-wrap gap-2 items-center mb-4 text-right">
+            <div class="lg:col-span-7 flex flex-col text-right" dir="rtl">
+              <div class="flex flex-wrap gap-2 items-center mb-4">
                 <span
                   id="modal-product-category"
                   class="bg-red-50 text-brand-red text-[10px] font-black px-4 py-2 rounded-xl uppercase tracking-widest border border-brand-red/10"
@@ -1211,12 +1211,12 @@
                 ></span>
               </div>
 
-              <div class="mb-6 text-right">
+              <div class="mb-6">
                 <h2
                   id="modal-product-name"
-                  class="text-3xl font-black text-brand-blue mb-4"
+                  class="text-3xl font-black text-brand-blue mb-4 leading-tight"
                 ></h2>
-                <div class="flex items-center gap-6 justify-start">
+                <div class="flex items-center gap-6">
                   <del
                     id="modal-product-original-price"
                     class="text-lg text-slate-300 font-bold"
@@ -1228,7 +1228,7 @@
                 </div>
               </div>
 
-              <div class="mb-8 text-right">
+              <div class="mb-8">
                 <h6
                   class="text-xs font-black text-slate-400 mb-2 uppercase tracking-widest"
                 >
@@ -1242,7 +1242,7 @@
 
               <hr class="border-slate-100 mb-8" />
 
-              <div id="modal-variants-section" class="mb-10 text-right">
+              <div id="modal-variants-section" class="mb-10">
                 <h6
                   class="text-sm font-black text-brand-blue mb-5 flex items-center gap-2"
                 >
@@ -1257,7 +1257,7 @@
                 ></div>
               </div>
 
-              <div id="modal-extras-section" class="mb-10 text-right">
+              <div id="modal-extras-section" class="mb-10">
                 <h6
                   class="text-sm font-black text-brand-blue mb-5 flex items-center gap-2"
                 >
@@ -1281,7 +1281,7 @@
                       id="modal-product-notes"
                       type="text"
                       placeholder="ملاحظاتك (بدون بصل، صوص زيادة...)"
-                      class="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-right text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all"
+                      class="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-brand-red/20 outline-none transition-all text-right"
                     />
                   </div>
                   <div
