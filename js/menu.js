@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    // === 1. منطق الـ Sidebar (القائمة الجانبية) ===
     $('#open-sidebar').on('click', function() {
         $('#menu-sidebar').removeClass('translate-x-full');
         $('#menu-overlay').removeClass('hidden').addClass('opacity-100');
@@ -18,6 +17,7 @@ $(document).ready(function () {
     let currentBasePrice = 0;
     let currentProductDefaultDesc = "";
     let defaultProductImage = "";
+
     function disableMainAddToCartBtn() {
         const btn = $("#modal-add-to-cart-btn");
         btn.prop("disabled", true)
@@ -26,7 +26,6 @@ $(document).ready(function () {
            .html(`<span>غير متوفر حالياً</span> <i class="fa-solid fa-circle-xmark"></i>`);
     }
 
-    // وظيفة تفعيل الزر الرئيسي
     function enableMainAddToCartBtn() {
         const btn = $("#modal-add-to-cart-btn");
         btn.prop("disabled", false)
@@ -35,7 +34,6 @@ $(document).ready(function () {
            .html(`<span>أضف للطلب</span> <i class="fa-solid fa-cart-shopping"></i>`);
     }
 
-    // دالة حساب السعر النهائي (Base Price + Extras Total) * Quantity
     function calculateTotalPrice() {
         let extrasTotal = 0;
         $(".extra-item").each(function () {
@@ -49,12 +47,10 @@ $(document).ready(function () {
         $("#modal-product-final-price").text(total.toFixed(2) + " ج.م");
     }
 
-    // فتح المودال وتجهيز البيانات
     $(document).on("click", ".js-add-to-cart", function (e) {
         e.preventDefault();
         const btn = $(this);
 
-        // تصفير المودال
         $("#modal-quantity-input").val(1);
         $("#modal-product-notes").val("");
         $("#modal-extras-container").empty();
@@ -63,7 +59,6 @@ $(document).ready(function () {
         currentProductDefaultDesc = btn.data("description") || "وجبة شهية محضرة من أجود المكونات الطازجة.";
         $("#modal-product-category").text(btn.data("category") || "عام");
 
-        // 1. معالجة الإضافات
         let extras = btn.data("extras") || [];
         if (typeof extras === "string") try { extras = JSON.parse(extras); } catch (e) { extras = []; }
 
@@ -91,42 +86,47 @@ $(document).ready(function () {
             });
         } else { $("#modal-extras-section").hide(); }
 
-        // 2. معالجة الأحجام (Variants) وفحص المخزن
         let variants = btn.data("variants") || [];
         if (typeof variants === "string") try { variants = JSON.parse(variants); } catch (e) { variants = []; }
 
         if (variants.length > 0) {
-            $("#modal-variants-section").show();
-            $("#modal-variants-container").empty();
-            
-            const allOut = variants.every(v => v.stock <= 0);
+            const visibleVariants = variants.filter(v => v.is_hidden !== true && v.is_hidden !== 1);
 
-            variants.forEach((v, index) => {
-                const isOutOfStock = v.stock <= 0;
-                const isActive = (index === 0 && !isOutOfStock) ? "border-brand-red bg-red-50/30 active-variant shadow-md" : "border-gray-100 bg-white shadow-sm";
-                const stockClasses = isOutOfStock ? "opacity-50 grayscale cursor-not-allowed select-none pointer-events-none" : "cursor-pointer hover:border-brand-red/30";
+            if (visibleVariants.length > 0) {
+                $("#modal-variants-section").show();
+                $("#modal-variants-container").empty();
+                
+                const allOut = visibleVariants.every(v => v.stock <= 0);
 
-                $("#modal-variants-container").append(`
-                    <div class="variant-card relative p-5 rounded-2xl border-2 transition-all flex items-center justify-between group ${isActive} ${stockClasses}" 
-                         data-vdata="${encodeURIComponent(JSON.stringify(v))}" data-disabled="${isOutOfStock}">
-                        ${isOutOfStock ? `
-                            <div class="absolute inset-0 bg-white/10 rounded-2xl z-10"></div>
-                            <span class="absolute -top-2 -left-2 bg-slate-800 text-white text-[9px] px-3 py-1 rounded-lg font-black z-20 shadow-lg italic">نفد</span>
-                        ` : ''}
-                        <div class="flex flex-col text-right">
-                            <span class="text-slate-400 text-[9px] font-bold mb-1 uppercase">الحجم</span>
-                            <span class="text-brand-blue font-black text-sm ${isOutOfStock ? 'line-through opacity-50' : ''}">${v.name}</span>
+                visibleVariants.forEach((v, index) => {
+                    const isOutOfStock = v.stock <= 0;
+                    const isActive = (index === 0 && !isOutOfStock) ? "border-brand-red bg-red-50/30 active-variant shadow-md" : "border-gray-100 bg-white shadow-sm";
+                    const stockClasses = isOutOfStock ? "opacity-50 grayscale cursor-not-allowed select-none pointer-events-none" : "cursor-pointer hover:border-brand-red/30";
+
+                    $("#modal-variants-container").append(`
+                        <div class="variant-card relative p-5 rounded-2xl border-2 transition-all flex items-center justify-between group ${isActive} ${stockClasses}" 
+                             data-vdata="${encodeURIComponent(JSON.stringify(v))}" data-disabled="${isOutOfStock}">
+                            ${isOutOfStock ? `
+                                <div class="absolute inset-0 bg-white/10 rounded-2xl z-10"></div>
+                                <span class="absolute -top-2 -left-2 bg-slate-800 text-white text-[9px] px-3 py-1 rounded-lg font-black z-20 shadow-lg italic">نفد</span>
+                            ` : ''}
+                            <div class="flex flex-col text-right relative z-0">
+                                <span class="text-slate-400 text-[9px] font-bold mb-1 uppercase">الحجم</span>
+                                <span class="text-brand-blue font-black text-sm ${isOutOfStock ? 'line-through opacity-50' : ''}">${v.name}</span>
+                            </div>
+                            <div class="${isOutOfStock ? 'bg-slate-200 text-slate-400' : 'bg-brand-blue text-white group-hover:bg-brand-red'} px-4 py-2 rounded-xl font-black text-xs transition-colors relative z-0">
+                                ${v.price} ج.م
+                            </div>
                         </div>
-                        <div class="${isOutOfStock ? 'bg-slate-200 text-slate-400' : 'bg-brand-blue text-white group-hover:bg-brand-red'} px-4 py-2 rounded-xl font-black text-xs transition-colors">
-                            ${v.price} ج.م
-                        </div>
-                    </div>
-                `);
-            });
+                    `);
+                });
 
-            const firstAvailable = variants.find(v => v.stock > 0) || variants[0];
-            updateModalWithVariant(firstAvailable);
-            if (allOut) disableMainAddToCartBtn(); else enableMainAddToCartBtn();
+                const firstAvailable = visibleVariants.find(v => v.stock > 0) || visibleVariants[0];
+                updateModalWithVariant(firstAvailable);
+                if (allOut) disableMainAddToCartBtn(); else enableMainAddToCartBtn();
+            } else {
+                $("#modal-variants-section").hide();
+            }
         } else {
             $("#modal-variants-section").hide();
             updateModalWithVariant({ price: btn.data("price") || 0, name: btn.data("name"), description: currentProductDefaultDesc, stock: 1 });
